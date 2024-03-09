@@ -9,14 +9,14 @@ pipeline{
 
         stage("SCM checkout"){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/javatechie-devops/jenkins-ci-cd.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VidhyaJagdale/devops-learning.git']])
             }
         }
 
         stage("Build Process"){
             steps{
                 script{
-                    sh 'mvn clean install'
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline{
         <p>Build Number: ${BUILD_NUMBER}</p>
         <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
     </body>
-</html>''', mimeType: 'text/html', replyTo: 'javatechie.learning@gmail.com', subject: 'Pipeline Status : ${BUILD_NUMBER}', to: 'javatechie.learning@gmail.com'
+</html>''', mimeType: 'text/html', replyTo: 'vidhyajagdale20@gmail.com', subject: 'Pipeline Status : ${BUILD_NUMBER}', to: 'vidhyajagdale20@gmail.com'
 
         }
     }
